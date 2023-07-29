@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Password generator</title>
+  
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <style>
+body {
+    font-size: 15pt;
+}
+*{
+  margin:0;
+  align-items: center;
+  justify-content: center;
+}
+.container{
+  width: 100%;
+  
+  height: 100vh;
+  background-image: linear-gradient(280deg,#0062FF,#000C75)
+}
+.container1{
+  margin-left: 8%;
+  padding:88px 0;
+  width: 80vw;
+}
+.container1 h2{
+  color: white;
+  line-height: 45px;}
+  
+.container1 h2 span{
+  color:#00FF6F;
+  font-weight: 800;
+  border-bottom: 2px solid #00FF6F;
+}
+.container2{
+  height:60%;
+  height: 5vh;
+  background-color: #fff;
+ position: relative;
+  margin-top: 60px;
+  border-radius: 5px;
+  display: flex;
+}
+.container2 input{
+  width: 40%;
+  flex:1;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  text-align: center;
+  margin-left: 17px;
+}
+.container1 button{
+  font-size: 20px;
+  margin-top: 60px;
+  color: #6C6C6C;
+  background-color: #00FF6F;
+  border: 0;
+  outline: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 400;
+  cursor: pointer;
+ 
+ 
+}
+.container2 span{
+  margin-right: 10px;
+  font-size: 15px;
+  color: #6C6C6C;
+  padding: 2px 4px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.container2 span:hover{
+  background-color: #6C6C6C;
+  color: #fff;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="container1">
+    <h2>Generate a <br><span>Random Password</span></h2>
+    <div class="container2" id="con">
+      <input type="text" id="input" placeholder="Password" readonly>
+     <span onclick="copyp()">Copy</span>
+      
+    </div>
+     <button onclick="generate()" >Generate</button>
+  </div>
+  
+</div>
+  <!-- Project -->
+  <script>
+    
+    let upr= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let lowr= 'abcdefghijklmnopqrstuvwxyz'
+let number='1234567890'
+let sym = '+&_#@-(/)!?;:{=^{][%'
+let random = 12
+let all = upr+lowr+number+sym
+function generate(){
+  let password = upr[Math.floor(Math.random()*upr.length)]
+  password += lowr[Math.floor(Math.random()*lowr.length)]
+  password += number[Math.floor(Math.random()*number.length)]
+  password += sym[Math.floor(Math.random()*sym.length)]
+  while(random>password.length){
+   password += all[Math.floor(Math.random()*all.length)]
+  }
+  input.value=password
+}
+
+  function copyp(){
+    input.select()
+    document.execCommand('copy')
+    
+  }
+  
+  
+
+
+
+  </script>
+</body>
+</html>
